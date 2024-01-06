@@ -9,10 +9,10 @@ app.use(express.json());
 
 app.get("/users", async (request, response) => {
     try {
-      const users = await User.findAll();
+      const Users = await User.findAll();
       return response.json({
         erro: false,
-        users
+        Users
       });
     } catch (error) {
       return response.status(500).json({
