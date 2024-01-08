@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 
 const User = require('./src/modules/User');
+const Snack = require('./src/modules/Snacks');
 
 app.use(express.json());
 
@@ -37,5 +38,20 @@ app.post("/cadastrar", async (request, response, next) => {
         })
     })
 })
+
+app.get("/snack", async (request, response) => {
+  try {
+    const Snacks = await Snack.findAll();
+    return response.json({
+      erro: false,
+      Snacks
+    });
+  } catch (error) {
+    return response.status(500).json({
+      erro: true,
+      mensagem: "Erro ao buscar usuários no banco de dados"
+    });
+  }
+});
 
 app.listen(process.env.PORT, () => console.log('Server is running!'));
