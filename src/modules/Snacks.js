@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require('../database/db');
 
-const Snack = db.define('Snack', {
+const Snack = db.define('snack', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -41,7 +41,7 @@ const Snack = db.define('Snack', {
 });
 
 // Se não existir a tabela:
-Snack.sync();
+// Snack.sync();
 
 //Verifica se ha alguma diferença na tabela, e realiza a alteração
 // Snack.sync({ alter: true });

@@ -49,7 +49,7 @@ app.get("/snack", async (request, response) => {
   } catch (error) {
     return response.status(500).json({
       erro: true,
-      mensagem: "Erro ao buscar usuários no banco de dados"
+      mensagem: "Erro ao buscar lanches no banco de dados"
     });
   }
 });
