@@ -19,6 +19,10 @@ Rota POST   - DB MySQL
 
 `npm instal --save dotenv`
 
+`npm i cors`
+
+`npm i -D @types/cors`
+
 Rodar:
 `nodemon index.js`
 

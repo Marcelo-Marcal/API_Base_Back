@@ -39,7 +39,7 @@ app.post("/cadastrar", async (request, response, next) => {
     })
 })
 
-app.get("/snack", async (request, response) => {
+app.get("/", async (request, response) => {
   try {
     const Snacks = await Snack.findAll();
     return response.json({
