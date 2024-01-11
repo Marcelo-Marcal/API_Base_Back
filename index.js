@@ -1,12 +1,14 @@
 require("dotenv").config()
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 const User = require('./src/modules/User');
 const Snack = require('./src/modules/Snacks');
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/users", async (request, response) => {
     try {

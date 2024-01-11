@@ -23,6 +23,8 @@ Rota POST   - DB MySQL
 
 `npm i -D @types/cors`
 
+`npm install cors`
+
 Rodar:
 `nodemon index.js`
 
