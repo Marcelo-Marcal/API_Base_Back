@@ -39,17 +39,28 @@ app.post("/cadastrar", async (request, response, next) => {
     })
 })
 
-app.get("/", async (request, response) => {
+app.get("/snacks", async (request, response) => {  
+  const { snack } = request.query;
+
+  if (!snack) return response.status(400).send({ error: "Snack is required" });
+
+  // SELECT * FROM Snack WHERE snack = 'drink'
   try {
-    const Snacks = await Snack.findAll();
+    const snacks = await Snack.findAll({
+      where: {
+        snack: snack,
+      },
+    });
+
     return response.json({
       erro: false,
-      Snacks
+      snacks,
     });
   } catch (error) {
+    console.error(error);
     return response.status(500).json({
       erro: true,
-      mensagem: "Erro ao buscar lanches no banco de dados"
+      mensagem: "Erro ao buscar lanches no banco de dados",
     });
   }
 });
