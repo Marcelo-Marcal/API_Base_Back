@@ -3,12 +3,22 @@ require("dotenv").config()
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const helmet = require('helmet');
+
 
 const User = require('./src/modules/User');
 const Snack = require('./src/modules/Snacks');
 
 app.use(express.json());
 app.use(cors());
+
+app.use(helmet.contentSecurityPolicy({
+  useDefaults: true,
+  directives: {
+    'script-src': ["'self'", "'unsafe-inline'", 'https://www.google-analytics.com'],
+    // Adicione outras diretivas conforme necessário
+  },
+}));
 
 app.get("/users", async (request, response) => {
     try {
@@ -41,12 +51,12 @@ app.post("/cadastrar", async (request, response, next) => {
     })
 })
 
+// Altere a rota no backend para '/snacks'
 app.get("/snacks", async (request, response) => {  
   const { snack } = request.query;
 
   if (!snack) return response.status(400).send({ error: "Snack is required" });
 
-  // SELECT * FROM Snack WHERE snack = 'drink'
   try {
     const snacks = await Snack.findAll({
       where: {
@@ -66,5 +76,6 @@ app.get("/snacks", async (request, response) => {
     });
   }
 });
+
 
 app.listen(process.env.PORT, () => console.log('Server is running!'));
