@@ -2,17 +2,17 @@
 CREATE DATABASE food /*!40100 COLLATE 'utf8mb4_general_ci' */
 
 -- Criação da tabela OrderStatus
-CREATE TABLE OrderStatus (
+CREATE TABLE orderStatus (
     id INT AUTO_INCREMENT NOT NULL,
     status VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
 -- Inserção de valores padrão
-INSERT INTO OrderStatus (status) VALUES ('PENDING'), ('PAID'), ('CANCELED');
+INSERT INTO orderStatus (status) VALUES ('PENDING'), ('PAID'), ('CANCELED');
 
 -- Criação da tabela Customer
-CREATE TABLE Customer (
+CREATE TABLE customer (
     id INT AUTO_INCREMENT NOT NULL,
     fullName VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE Customer (
 );
 
 -- Criação da tabela Order
-CREATE TABLE `Order` (
+CREATE TABLE `order` (
     id INT AUTO_INCREMENT NOT NULL,
     statusId INT NOT NULL,
     total DECIMAL(10,2) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `Order` (
 );
 
 -- Criação da tabela OrderItem
-CREATE TABLE OrderItem (
+CREATE TABLE orderItem (
     id INT AUTO_INCREMENT NOT NULL,
     quantity INT NOT NULL DEFAULT 0,
     subTotal DECIMAL(10,2) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE OrderItem (
 
 -- Criar a Snack so apois criar as outras
 
-CREATE TABLE Snack (
+CREATE TABLE snack (
     id INT AUTO_INCREMENT NOT NULL,
     snack VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
