@@ -25,18 +25,18 @@ const Snack = db.define('snacks', {
         allowNull: false,
     },
     image: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING, // Assumi que 'image' é uma URL ou caminho para a imagem
         allowNull: false,
     },
     createdAt: {
-        type: Sequelize.DATE(6),
+        type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(6)'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
     updatedAt: {
-        type: Sequelize.DATE(6),
+        type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
     },
 });
 

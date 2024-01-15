@@ -22,37 +22,6 @@ app.get("/", (req, res) => {
   res.send({ message });
 });
 
-app.get("/users", async (request, response) => {
-    try {
-      const Users = await User.findAll();
-      return response.json({
-        erro: false,
-        Users
-      });
-    } catch (error) {
-      return response.status(500).json({
-        erro: true,
-        mensagem: "Erro ao buscar usuários no banco de dados"
-      });
-    }
-  });
-
-// app.post("/cadastrar", async (request, response, next) => {
-//     // console.log(request.body);
-//     await User.create(request.body)
-//     .then(() => {
-//         return response.json({
-//             erro: false,
-//             mensagem: "Usuario Cadastrado!"
-//         })
-//     }).catch(() => {
-//         return response.status(400).json({
-//             erro: true,
-//             mensagem: "Erro: Usuario Não Cadastrado!"
-//         })
-//     })
-// })
-
 // Altere a rota no backend para '/snacks'
 app.get("/snacks", async (request, response) => {  
   const { snack } = request.query;
@@ -73,6 +42,37 @@ app.get("/snacks", async (request, response) => {
     response.status(500).send({ error: "Internal Server Error" });
   }
 });
+
+app.get("/users", async (request, response) => {
+  try {
+    const Users = await User.findAll();
+    return response.json({
+      erro: false,
+      Users
+    });
+  } catch (error) {
+    return response.status(500).json({
+      erro: true,
+      mensagem: "Erro ao buscar usuários no banco de dados"
+    });
+  }
+});
+
+// app.post("/cadastrar", async (request, response, next) => {
+//     // console.log(request.body);
+//     await User.create(request.body)
+//     .then(() => {
+//         return response.json({
+//             erro: false,
+//             mensagem: "Usuario Cadastrado!"
+//         })
+//     }).catch(() => {
+//         return response.status(400).json({
+//             erro: true,
+//             mensagem: "Erro: Usuario Não Cadastrado!"
+//         })
+//     })
+// })
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
