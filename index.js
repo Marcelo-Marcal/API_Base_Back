@@ -2,11 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
-const helmet = require('helmet');
-
 
 const User = require('./src/modules/User');
 const Snack = require('./src/modules/Snacks');
+const Order = require('./src/modules/Order');
 
 dotenv.config();
 
@@ -42,6 +41,25 @@ app.get("/snacks", async (request, response) => {
     response.status(500).send({ error: "Internal Server Error" });
   }
 });
+
+app.get("/orders/:id", async (request, response) => {
+  const { id } = request.params
+
+  try {
+    const order = await Order.findUnique({
+      where: {
+        id: +id,
+      },
+    })
+
+    if (!order) return response.status(404).send({ error: "Order not found" })
+
+    response.send(order)
+  } catch (error) {
+    console.error("Error in /order route:", error);
+    response.status(500).send({ error: "Internal Server Error" });
+  }
+})
 
 app.get("/users", async (request, response) => {
   try {

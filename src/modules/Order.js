@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require('../database/db');
-const Customer = require('./Customer'); // Certifique-se de importar o modelo Customer
-const OrderItem = require('./OrderItem'); // Certifique-se de importar o modelo OrderItem
+const Customer = require('./Customer');
+const OrderItem = require('./OrderItem');
 
 const Order = db.define('orders', {
     id: {
