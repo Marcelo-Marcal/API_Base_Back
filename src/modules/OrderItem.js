@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require('../database/db');
-const Order = require('./Order'); // Certifique-se de importar o modelo Order
-const Snack = require('./Snack'); // Certifique-se de importar o modelo Snack
+// const Order = require('./Order');
+// const Snack = require('./Snack');
 
 const OrderItem = db.define('orderItems', {
     id: {
@@ -43,8 +43,8 @@ const OrderItem = db.define('orderItems', {
     },
 });
 
-OrderItem.belongsTo(Order, { foreignKey: 'orderId', as: 'order' });
-OrderItem.belongsTo(Snack, { foreignKey: 'snackId', as: 'snack' });
+// OrderItem.belongsTo(Order, { foreignKey: 'orderId', as: 'order' });
+// OrderItem.belongsTo(Snack, { foreignKey: 'snackId', as: 'snack' });
 
 // Se não existir a tabela:
 // OrderItem.sync();

@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require('../database/db');
-const Order = require('./Order'); // Certifique-se de importar o modelo Order
+// const Order = require('./Order');
 
 const Customer = db.define('customers', {
     id: {
@@ -65,7 +65,7 @@ const Customer = db.define('customers', {
     },
 });
 
-Customer.hasMany(Order, { foreignKey: 'customerId', as: 'orders' });
+// Customer.hasMany(Order, { foreignKey: 'customerId', as: 'orders' });
 
 // Se não existir a tabela:
 // Customer.sync();

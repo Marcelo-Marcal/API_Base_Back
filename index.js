@@ -5,7 +5,8 @@ const app = express();
 
 const User = require('./src/modules/User');
 const Snack = require('./src/modules/Snacks');
-const Order = require('./src/modules/Order');
+const Order = require('./src/modules/Customer');
+// const Order = require('./src/modules/Order');
 
 dotenv.config();
 
@@ -60,6 +61,26 @@ app.get("/orders/:id", async (request, response) => {
     response.status(500).send({ error: "Internal Server Error" });
   }
 })
+
+app.get("/customers", async (request, response) => {  
+  const { customer } = request.query;
+
+  if (!customer) return response.status(400).send({ error: "Customer is required" });
+
+  try {
+    const customers = await Customer.findAll({
+      where: {
+        customer: customer.toString(),
+      },
+    });
+
+    response.send(customers);
+
+  } catch (error) {
+    console.error("Error in /customer route:", error);
+    response.status(500).send({ error: "Internal Server Error" });
+  }
+});
 
 app.get("/users", async (request, response) => {
   try {

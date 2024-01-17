@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require('../database/db');
-const Customer = require('./Customer');
-const OrderItem = require('./OrderItem');
+// const Customer = require('./Customer');
+// const OrderItem = require('./OrderItem');
 
 const Order = db.define('orders', {
     id: {
@@ -40,7 +40,7 @@ const Order = db.define('orders', {
     },
 });
 
-Order.hasMany(OrderItem, { foreignKey: 'orderId', as: 'orderItems' });
+// Order.hasMany(OrderItem, { foreignKey: 'orderId', as: 'orderItems' });
 
 // Se não existir a tabela:
 // Order.sync();
